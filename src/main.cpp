@@ -4,12 +4,15 @@
 #include <AccelStepper.h>
 #include <MultiStepper.h>
 #include <AceRoutine.h>
+#include <TimerOne.h>
 #include "CommandHandler.h"
 
 // For use with the Stepper_Controller_Arduino_v2.3.py
 
 using namespace ace_routine;
 CommandHandler<10, 90, 15> SerialCommandHandler;
+
+volatile bool emergencyStop = false;
 
 static int stepper_profile[6];
 static int stepper_dir[3];
@@ -278,6 +281,7 @@ void stopAndpowerOffMotorX() // stop with deacceleration
   {
     motorX.disableOutputs();
     motorX.stop();
+    
     motorXenable = false;
   }
 }
@@ -288,6 +292,7 @@ void stopAndpowerOffMotorY() // stop with deacceleration
   {
     motorY.disableOutputs();
     motorY.stop();
+    
     motorYenable = false;
   }
 }
@@ -298,20 +303,41 @@ void stopAndpowerOffMotorZ() // stop with deacceleration
   {
     motorZ.disableOutputs();
     motorZ.stop();
+    
     motorZenable = false;
   }
 }
 
 void disconn(CommandParameter &parameters){
-  stopAndpowerOffMotorX();
-  stopAndpowerOffMotorY();
-  stopAndpowerOffMotorZ();
+  emergencyStop = true;
+}
+
+void emergencyStopISR(){
+  if (emergencyStop){
+
+    Serial.println(404);
+
+    stopAndpowerOffMotorX();
+    stopAndpowerOffMotorY();
+    stopAndpowerOffMotorZ();
+
+    k[0] = 0;
+
+    stepper_dir[0] = 0;
+    stepper_dir[1] = 0;
+    stepper_dir[2] = 0;
+
+  }
+  emergencyStop = false;
 }
 
 
 void setup() {
   
   Serial.begin(250000);
+
+  Timer1.initialize(1000);
+  Timer1.attachInterrupt(emergencyStopISR);
 
   SerialCommandHandler.AddCommand(F("RES"), reset_m);
   pinMode(RES_X_PIN, OUTPUT);

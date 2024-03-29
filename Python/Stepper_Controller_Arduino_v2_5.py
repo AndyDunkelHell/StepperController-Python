@@ -154,6 +154,7 @@ def check_presence(correct_port, interval=0.1):
             break
         time.sleep(interval)
 
+
 def on_closing():
     """
     
@@ -317,6 +318,14 @@ class GUI:
             padx=50
         )
 
+        # Emergency Stop BUTTON
+        self.e_stop = Button(self.control_panel, command=self.emergencyStop)
+        self.e_stop.configure(
+            text="STOP",
+            padx=50
+        )
+
+
         ## ALL LABELS ##
         
         # Define Labels for the Motor Positions
@@ -360,6 +369,7 @@ class GUI:
         
         self.selec_profile.grid(row=0, column=4, padx=10)
         self.run_profile.grid(row=0, column=1, padx=2)
+        self.e_stop.grid(row=0, column=3, padx=2)
 
         #LABELS
         self.m1.grid(row=0, column=0)
@@ -383,6 +393,19 @@ class GUI:
         self.l3 = []
 
     ###FUNCTIONS###
+
+    def emergencyStop(self):
+            global send1
+            global send2
+            global send3
+            comm = '!DC\r'
+            arduinoData.write(comm.encode())
+            if send1:
+                self.move1()
+            if send2:
+                self.move2()
+            if send3:
+                self.move3()
 
     def aboutWindow(self):
         """
@@ -1326,6 +1349,13 @@ class ThreadedTask(threading.Thread):
                                 MainGUI.main_ui.enaButtons()
                                 time.sleep(0.5)
                                 break
+                            elif(int_l == 404):
+                                    MainGUI.main_ui.enaButtons()
+                                    glob_status.config(text = "Emergency Stop", fg= "red")
+                                    _func = False
+                                    set_ind = 0
+                                    self.val = 0
+                                    return
 
 
             if set_ind == 80:  # Profile Command
@@ -1382,6 +1412,14 @@ class ThreadedTask(threading.Thread):
                                         in_line2 = ""
                                         self.profile = True
                                         continue
+                                    elif (int_l == 404):  
+                                        in_line2 = ""
+                                        MainGUI.main_ui.enaButtons()
+                                        glob_status.config(text = "Emergency Stop", fg= "red")
+                                        _func = False
+                                        set_ind = 0
+                                        self.val = 0
+                                        return
                 i += 1
                 j += 1
                 p_fertig = "!PF\r"
