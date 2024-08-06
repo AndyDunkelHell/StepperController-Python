@@ -37,7 +37,7 @@ Once you start the program you will be greeted with the following window:
 
 Please insert the correct COM port and Baudrate for your specific Arduino board. The program will then initialize the connection, if it succeeds you will be greeted with the main GUI window, where you can control the motors and use the different functions.
 
-![Screenshot 2023-10-24 223115](https://github.com/AndyDunkelHell/FreeMove-Python/assets/58504780/746a9d3e-33da-4a42-b307-6c769878705d)
+![Imgur](https://imgur.com/XXP6YeL.jpg)
 
 In the following section we will go over the different Parts of the GUI and their functions.
 
