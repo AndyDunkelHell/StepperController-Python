@@ -8,7 +8,7 @@ To find out more about the inner works of the Arduino Sketch, refer to the READM
 
 The following Diagram shows the general structure of the program:
 
-![Imgur](https://imgur.com/LzSM1lU)
+![Imgur Image](https://imgur.com/LzSM1lU.jpg)
 <p align="center">
   <img src="https://imgur.com/LzSM1lU" alt="Control Diagram"/>
 </p>
