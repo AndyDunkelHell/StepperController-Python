@@ -8,7 +8,7 @@ To find out more about the inner works of the Arduino Sketch, refer to the READM
 
 The following Diagram shows the general structure of the program:
 
-![FreeMoveDiagram](https://github.com/AndyDunkelHell/FreeMove-Python/assets/58504780/02555d34-2077-4645-b5b4-a4b929e9f068)
+![FreeMoveDiagram](https://imgur.com/LzSM1lU)
 
 
 ## FreeMove Arduino Project GUI User Guide
