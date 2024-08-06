@@ -9,11 +9,6 @@ To find out more about the inner works of the Arduino Sketch, refer to the READM
 The following Diagram shows the general structure of the program:
 
 ![Imgur Image](https://imgur.com/LzSM1lU.jpg)
-<p align="center">
-  <img src="https://imgur.com/LzSM1lU" alt="Control Diagram"/>
-</p>
-
-
 
 ## FreeMove Arduino Project GUI User Guide
 
@@ -38,8 +33,7 @@ If you want to use the Arduino for Controllong the "Takt Richtung Setting" must 
 
 Once you start the program you will be greeted with the following window:
 
-
-![Screenshot 2023-10-24 223102](https://github.com/AndyDunkelHell/FreeMove-Python/assets/58504780/e99b0bc8-793a-4222-aaf1-b244e897ceb9)
+![Imgur](https://imgur.com/yyyg3bg.jpg)
 
 Please insert the correct COM port and Baudrate for your specific Arduino board. The program will then initialize the connection, if it succeeds you will be greeted with the main GUI window, where you can control the motors and use the different functions.
 
