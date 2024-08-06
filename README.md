@@ -8,6 +8,7 @@ To find out more about the inner works of the Arduino Sketch, refer to the READM
 
 The following Diagram shows the general structure of the program:
 
+![Imgur](https://imgur.com/LzSM1lU)
 <p align="center">
   <img src="https://imgur.com/LzSM1lU" alt="Control Diagram"/>
 </p>
@@ -36,6 +37,7 @@ If you want to use the Arduino for Controllong the "Takt Richtung Setting" must 
 ## GUI preview:
 
 Once you start the program you will be greeted with the following window:
+
 
 ![Screenshot 2023-10-24 223102](https://github.com/AndyDunkelHell/FreeMove-Python/assets/58504780/e99b0bc8-793a-4222-aaf1-b244e897ceb9)
 
